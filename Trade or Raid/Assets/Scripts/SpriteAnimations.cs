@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class SpriteAnimations : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-
     [Header("GameObject Variables")]
-    [SerializeField] private GameObject gameObjectToAnimate;
+    [SerializeField] private GameObject animationPivotObject;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Walk Animation Variables")]
-    [SerializeField] private float wobbleSpeed = 0f;
+    [SerializeField] private float walkWobbleTimeLength = 0f;
     [SerializeField] private float wobbleHorizontalStrength = 0f;
     [SerializeField] private float wobbleVerticalStrength = 0f;
     private bool isMoving = false;
     private float startingScaleY = 0f;
+    private float walkAnimProgress = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //get sprite renderer of gameObjectToAnimate
-        spriteRenderer = gameObjectToAnimate.GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-            Debug.LogWarning("Please add a SpriteRenderer Component to " + gameObjectToAnimate.name);
+        //check sprite renderer of animationPivotObject
+        //if (spriteRenderer == null)
+        //    Debug.LogWarning("Please add a SpriteRenderer Component to " + animationPivotObject.name);
 
         //get startingScaleY
-        startingScaleY = gameObjectToAnimate.transform.localScale.y;
+        startingScaleY = animationPivotObject.transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -36,7 +35,12 @@ public class SpriteAnimations : MonoBehaviour
         {
             BeginMovingLeft();
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            EndMoving();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             BeginMovingRight();
         }
@@ -48,7 +52,33 @@ public class SpriteAnimations : MonoBehaviour
         //***** WALK ANIMATION *****
         if(isMoving)
         {
-            gameObjectToAnimate.transform.localScale += new Vector3(0f, Mathf.Lerp(0f, startingScaleY * wobbleVerticalStrength,  Time.deltaTime * wobbleSpeed), 0f);
+            //increment walk animation progress
+            walkAnimProgress += Time.deltaTime;
+
+            if(walkAnimProgress > 0f && walkAnimProgress <= walkWobbleTimeLength * 0.5f)
+            {
+                //rotate sprite left
+                animationPivotObject.transform.Rotate(0f, 0f, wobbleHorizontalStrength * Time.deltaTime);
+
+                //stretch sprite vertically and shrink sprite horizontally
+                //animationPivotObject.transform.localScale += new Vector3(-1, 1, 0) * Time.deltaTime;
+            }
+            else if(walkAnimProgress > walkWobbleTimeLength * 0.5f && walkAnimProgress <= walkWobbleTimeLength)
+            {
+                //rotate sprite right
+                animationPivotObject.transform.Rotate(0f, 0f, -wobbleHorizontalStrength * Time.deltaTime);
+
+                //shrink sprite vertically and stretch sprite horizontally
+                //animationPivotObject.transform.localScale += new Vector3(1, -1, 0) * Time.deltaTime;
+            }
+            else if(walkAnimProgress > walkWobbleTimeLength)
+            {
+                //reset walkAnimProgress
+                walkAnimProgress = 0f;
+            }
+            //animationPivotObject.transform.localScale += new Vector3(0f, Mathf.Lerp(0f, startingScaleY * wobbleVerticalStrength,  Time.deltaTime * wobbleSpeed), 0f);
+            //animationPivotObject.transform.localScale += new Vector3(0f, Mathf.PingPong(Time.time * wobbleSpeed, startingScaleY * wobbleVerticalStrength), 0f);
+            //animationPivotObject.transform.localScale += ;
         }
     }
 
@@ -80,7 +110,17 @@ public class SpriteAnimations : MonoBehaviour
     {
         //set isMoving to false
         isMoving = false;
-    }
 
-    
+        //reset walkAnimProgress
+        walkAnimProgress = 0f;
+
+        //reset transform
+        Reset_Transform();
+    }
+    private void Reset_Transform()
+    {
+        animationPivotObject.transform.localPosition = Vector3.zero;
+        animationPivotObject.transform.localRotation = Quaternion.identity;
+        animationPivotObject.transform.localScale = Vector3.one;
+    }
 }
