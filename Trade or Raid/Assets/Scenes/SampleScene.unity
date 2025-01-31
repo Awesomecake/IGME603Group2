@@ -371,7 +371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8150b7de443aab448371e30f89a8b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
+  gameObjectToAnimate: {fileID: 1084032858}
+  wobbleSpeed: 0
+  wobbleHorizontalStrength: 0
+  wobbleVerticalStrength: 0
 --- !u!212 &1084032860
 SpriteRenderer:
   m_ObjectHideFlags: 0
