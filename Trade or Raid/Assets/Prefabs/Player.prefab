@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2819719761167419126}
   - component: {fileID: 1936444752227229191}
   - component: {fileID: 2731124230760917624}
+  - component: {fileID: 2097190100265458115}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -28,10 +29,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.09762747, y: 0.3752137, z: 0.033291284}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1415196184946398664}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1936444752227229191
@@ -140,46 +140,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bc46acce6d437439cce9ae3e25a1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 3
+  RedPlayerSprite: {fileID: 0}
+  GreenPlayerSprite: {fileID: 0}
+  BluePlayerSprite: {fileID: 0}
   speed: 0.01
---- !u!1 &7808933248531153024
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1415196184946398664}
-  - component: {fileID: 4055794325271719738}
-  m_Layer: 0
-  m_Name: BluePlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1415196184946398664
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7808933248531153024}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09762747, y: -0.3752137, z: -0.033291284}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2819719761167419126}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4055794325271719738
+--- !u!212 &2097190100265458115
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7808933248531153024}
+  m_GameObject: {fileID: 7571437764087730539}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
