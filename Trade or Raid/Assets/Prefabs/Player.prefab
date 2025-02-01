@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bc78e029435ae8347ab5a06286156832, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 552ee702ff68820469e960c329ab7ec3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -243,11 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bc46acce6d437439cce9ae3e25a1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 3
+  playerID: 0
   spriteRenderer: {fileID: 3188389371459306962}
-  RedPlayerSprite: {fileID: 0}
-  GreenPlayerSprite: {fileID: 0}
-  BluePlayerSprite: {fileID: 0}
+  RedPlayerSprite: {fileID: 21300000, guid: 552ee702ff68820469e960c329ab7ec3, type: 3}
+  GreenPlayerSprite: {fileID: 21300000, guid: 5a2f0bed0f12dec4e86b739082f6d635, type: 3}
+  BluePlayerSprite: {fileID: 21300000, guid: bc78e029435ae8347ab5a06286156832, type: 3}
   spriteAnimations: {fileID: 2181214697122918932}
   speed: 0.01
 --- !u!212 &2097190100265458115
@@ -291,7 +291,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bc78e029435ae8347ab5a06286156832, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a2f0bed0f12dec4e86b739082f6d635, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
