@@ -244,10 +244,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 3
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 3188389371459306962}
   RedPlayerSprite: {fileID: 0}
   GreenPlayerSprite: {fileID: 0}
   BluePlayerSprite: {fileID: 0}
+  spriteAnimations: {fileID: 2181214697122918932}
   speed: 0.01
 --- !u!212 &2097190100265458115
 SpriteRenderer:

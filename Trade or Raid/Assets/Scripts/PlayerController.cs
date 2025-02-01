@@ -7,12 +7,17 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     // 0,1,2 for Red, Green, Blue
+    [Header("Player ID Variables")]
     [SerializeField] private int playerID;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite RedPlayerSprite;
     [SerializeField] private Sprite GreenPlayerSprite;
     [SerializeField] private Sprite BluePlayerSprite;
 
+    [Header("Sprite Animation")]
+    [SerializeField] private SpriteAnimations spriteAnimations;
+
+    [Header("Movement Variables")]
     [SerializeField] private float speed = 0.01f;
 
     private bool isMoving = false;
@@ -33,6 +38,26 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = context.ReadValue<Vector2>().normalized;
         isMoving = moveDirection != Vector2.zero;
+
+        //***** movement animation logic *****
+        //if player is not moving,...
+        if(moveDirection == Vector2.zero)
+        {
+            //end walking animation
+            spriteAnimations.EndMoving();
+        }
+        //else if moveDirection is going to the left,...
+        else if (moveDirection.x <= 0f)
+        {
+            //start walking animation to the left
+            spriteAnimations.BeginMovingLeft();
+        }
+        //else moveDirection is going to the right,...
+        else
+        {
+            //start walking animation to the right
+            spriteAnimations.BeginMovingRight();
+        }
     }
 
     void Move()
