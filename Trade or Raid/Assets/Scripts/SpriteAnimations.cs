@@ -6,6 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteAnimations : MonoBehaviour
 {
+    //General Animation Variables
+    private float startingScaleY = 0f;
+    private float walkAnimProgress = 0f;
+
     [Header("GameObject Variables")]
     private SpriteRenderer spriteRenderer;
 
@@ -15,8 +19,12 @@ public class SpriteAnimations : MonoBehaviour
     [SerializeField] private float walkVerticalStretchStrength = 1f;
     [SerializeField] private float walkHorizontalSquashStrength = 1f;
     [HideInInspector] public bool isMoving = false;
-    private float startingScaleY = 0f;
-    private float walkAnimProgress = 0f;
+
+    [Header("Harvest Animation Variables")]
+    public float harvestTime = 0f;
+    [SerializeField] private float harvestVerticalStretchStrength = 1f;
+    [SerializeField] private float harvestHorizontalSquashStrength = 1f;
+    public bool isBeingHarvested = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,28 +69,28 @@ public class SpriteAnimations : MonoBehaviour
                 //rotate sprite left
                 gameObject.transform.Rotate(0f, 0f, wobbleRotationStrength * Time.deltaTime);
 
-                StretchSpriteUp(Time.deltaTime);
+                WalkStretchSpriteUp(Time.deltaTime);
             }
             else if(walkAnimProgress > walkWobbleTimeLength * 0.25f && walkAnimProgress <= walkWobbleTimeLength * 0.5f)
             {
                 //rotate sprite right
                 gameObject.transform.Rotate(0f, 0f, -wobbleRotationStrength * Time.deltaTime);
 
-                SquashSpriteDown(Time.deltaTime);
+                WalkSquashSpriteDown(Time.deltaTime);
             }
             else if (walkAnimProgress > walkWobbleTimeLength * 0.5f && walkAnimProgress <= walkWobbleTimeLength * 0.75f)
             {
                 //rotate sprite right
                 gameObject.transform.Rotate(0f, 0f, -wobbleRotationStrength * Time.deltaTime);
 
-                StretchSpriteUp(Time.deltaTime);
+                WalkStretchSpriteUp(Time.deltaTime);
             }
             else if(walkAnimProgress > walkWobbleTimeLength * 0.75f && walkAnimProgress <= walkWobbleTimeLength)
             {
                 //rotate sprite left
                 gameObject.transform.Rotate(0f, 0f, wobbleRotationStrength * Time.deltaTime);
 
-                SquashSpriteDown(Time.deltaTime);
+                WalkSquashSpriteDown(Time.deltaTime);
             }
             else if(walkAnimProgress > walkWobbleTimeLength)
             {
@@ -92,8 +100,15 @@ public class SpriteAnimations : MonoBehaviour
                 Reset_Transform();
             }
         }
+
+        //***** HARVEST ANIMATION *****
+        if(isBeingHarvested)
+        {
+
+        }
     }
 
+    //***** Walk Animation Functions *****
     public void BeginMovingLeft()
     {
         //flip sprite to left
@@ -129,22 +144,52 @@ public class SpriteAnimations : MonoBehaviour
         //reset transform
         Reset_Transform();
     }
+
+    private void WalkStretchSpriteUp(float deltaTime)
+    {
+        //stretch sprite vertically and shrink sprite horizontally
+        gameObject.transform.localScale += new Vector3(-walkHorizontalSquashStrength, walkVerticalStretchStrength, 0) * deltaTime;
+    }
+
+    private void WalkSquashSpriteDown(float deltaTime)
+    {
+        //shrink sprite vertically and stretch sprite horizontally
+        gameObject.transform.localScale += new Vector3(walkHorizontalSquashStrength, -walkVerticalStretchStrength, 0) * deltaTime;
+    }
+
+    //***** Harvest Animation Functions *****
+    public void BeginHarvesting()
+    {
+        //set isBeingHarvested to true
+        isBeingHarvested = true;
+    }
+
+    public void CancelHarvesting()
+    {
+        //set isBeingHarvested to false
+        isBeingHarvested = false;
+        
+        //reset transform
+        Reset_Transform();
+    }
+
+    private void HarvestStretchSpriteUp(float deltaTime)
+    {
+        //stretch sprite vertically and shrink sprite horizontally
+        gameObject.transform.localScale += new Vector3(-harvestHorizontalSquashStrength, harvestVerticalStretchStrength, 0) * deltaTime;
+    }
+
+    private void HarvestSquashSpriteDown(float deltaTime)
+    {
+        //shrink sprite vertically and stretch sprite horizontally
+        gameObject.transform.localScale += new Vector3(harvestHorizontalSquashStrength, -harvestVerticalStretchStrength, 0) * deltaTime;
+    }
+    //***** Helper Functions *****
     private void Reset_Transform()
     {
         //reset all parts of the transform
         gameObject.transform.localPosition = Vector3.zero;
         gameObject.transform.localRotation = Quaternion.identity;
         gameObject.transform.localScale = Vector3.one;
-    }
-    private void StretchSpriteUp(float deltaTime)
-    {
-        //stretch sprite vertically and shrink sprite horizontally
-        gameObject.transform.localScale += new Vector3(-walkHorizontalSquashStrength, walkVerticalStretchStrength, 0) * deltaTime;
-    }
-
-    private void SquashSpriteDown(float deltaTime)
-    {
-        //shrink sprite vertically and stretch sprite horizontally
-        gameObject.transform.localScale += new Vector3(walkHorizontalSquashStrength, -walkVerticalStretchStrength, 0) * deltaTime;
     }
 }
