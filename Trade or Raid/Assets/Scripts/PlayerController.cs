@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     // 0,1,2 for Red, Green, Blue
     [Header("Player ID Variables")]
     [SerializeField] private int playerID;
+    public int PlayerID {  get { return playerID; } }
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite RedPlayerSprite;
     [SerializeField] private Sprite GreenPlayerSprite;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteAnimations spriteAnimations;
 
     [Header("Movement Variables")]
-    [SerializeField] private float speed = 0.01f;
+    [SerializeField] private float speed;
 
     private bool isMoving = false;
     private Vector2 moveDirection = Vector2.zero;
@@ -83,7 +84,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
 
 #if UNITY_EDITOR
     void OnValidate() { UnityEditor.EditorApplication.delayCall += UpdatePlayerColor; }
