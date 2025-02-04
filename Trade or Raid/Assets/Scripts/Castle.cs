@@ -10,6 +10,7 @@ public class Castle : MonoBehaviour
     [SerializeField] Sprite redCastleSprite;
     [SerializeField] Sprite greenCastleSprite;
     [SerializeField] Sprite blueCastleSprite;
+    [SerializeField] GameObject circleIndicator;
 
     private void Start()
     {
@@ -33,5 +34,15 @@ public class Castle : MonoBehaviour
                     spriteRenderer.sprite = redCastleSprite;
                 break;
         }
+    }
+
+    public void TurnOnCircleIndicator()
+    {
+        circleIndicator.SetActive(true);
+    }
+
+    public void TurnOffCircleIndicator()
+    {
+        circleIndicator.SetActive(false);
     }
 }

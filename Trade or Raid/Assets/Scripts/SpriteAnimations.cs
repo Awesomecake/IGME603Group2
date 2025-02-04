@@ -120,7 +120,7 @@ public class SpriteAnimations : MonoBehaviour
 
             if(harvestAnimProgress > 0f && harvestAnimProgress <= harvestTime)
             {
-                HarvestStretchSpriteUp(Time.deltaTime);
+                HarvestStretchSpriteUp(Time.deltaTime/harvestTime);
             }
             else if(harvestAnimProgress > harvestTime)
             {
@@ -181,6 +181,13 @@ public class SpriteAnimations : MonoBehaviour
     //***** Harvest Animation Functions *****
     public void BeginHarvesting()
     {
+        //set isBeingHarvested to true
+        isBeingHarvested = true;
+    }
+
+    public void BeginHarvesting(float harvestTime)
+    {
+        this.harvestTime = harvestTime;
         //set isBeingHarvested to true
         isBeingHarvested = true;
     }

@@ -55,12 +55,22 @@ public class PlayerController : MonoBehaviour
         {
             //start walking animation to the left
             spriteAnimations.BeginMovingLeft();
+
+            if(playerStorage.carriedResource != null)
+            {
+                playerStorage.carriedResource.spriteAnimations.BeginMovingLeft();
+            }
         }
         //else moveDirection is going to the right,...
         else
         {
             //start walking animation to the right
             spriteAnimations.BeginMovingRight();
+
+            if (playerStorage.carriedResource != null)
+            {
+                playerStorage.carriedResource.spriteAnimations.BeginMovingLeft();
+            }
         }
     }
 

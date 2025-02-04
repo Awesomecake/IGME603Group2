@@ -102,6 +102,10 @@ MonoBehaviour:
   walkVerticalStretchStrength: 0.8
   walkHorizontalSquashStrength: 0.7
   isMoving: 0
+  harvestTime: 1
+  harvestVerticalStretchStrength: 1
+  harvestHorizontalSquashStrength: 1
+  isBeingHarvested: 0
 --- !u!1 &7571437764087730539
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +119,7 @@ GameObject:
   - component: {fileID: 2731124230760917624}
   - component: {fileID: 6105737218245076801}
   - component: {fileID: 1669086728843066864}
+  - component: {fileID: 112771834108559484}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -310,4 +315,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carriedResource: {fileID: 0}
-  harvestRange: 1
+  myCastle: {fileID: 0}
+--- !u!50 &112771834108559484
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571437764087730539}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

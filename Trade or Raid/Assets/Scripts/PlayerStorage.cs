@@ -5,32 +5,24 @@ using UnityEngine;
 public class PlayerStorage : MonoBehaviour
 {
     [SerializeField] public Resource carriedResource;
-    [SerializeField] float harvestRange = 1;
+    //[SerializeField] float harvestRange = 1;
     [SerializeField] Castle myCastle;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!carriedResource)
-        {
-            Resource newResource = collision.GetComponent<Resource>();
-            PickUpResource(newResource);
-            carriedResource.GatherResource(transform);
-        }
-    }
-
-    void PickUpResource(Resource newResource)
+    public void PickUpResource(Resource newResource)
     {
         carriedResource = newResource;
+        myCastle.TurnOnCircleIndicator();
     }
 
     public void DepositResource()
     {
         carriedResource.DepositResource(myCastle.transform);
         carriedResource = null;
+        myCastle.TurnOffCircleIndicator();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, harvestRange);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(transform.position, harvestRange);
+    //}
 }
