@@ -15,7 +15,7 @@ public class CastleStorage : MonoBehaviour
         wheatStored--;
         UpdateWheatVisual();
 
-        if (wheatStored == 0 )
+        if (wheatStored == 0)
         {
             //Player Dies
         }
@@ -24,17 +24,26 @@ public class CastleStorage : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController playerController = collision.GetComponent<PlayerController>();
-        if (playerController != null && playerID == playerController.PlayerID)
+        if (playerController != null 
+            && playerID == playerController.PlayerID 
+            && playerController.playerStorage.carriedResource != null)
         {
-            if (wheatStored < 10)
-            {
-                //Add Wheat
-                wheatStored++;
+            StoreWheat(playerController.playerStorage);
+        }
+    }
 
-                UpdateWheatVisual();
+    private void StoreWheat(PlayerStorage playerStorage)
+    {
+        playerStorage.DepositResource();
 
-                Debug.Log("Player " + playerID + " Wheat Stored");
-            }
+        if (wheatStored < 10)
+        {
+            //Add Wheat
+            wheatStored++;
+
+            UpdateWheatVisual();
+
+            Debug.Log("Player " + playerID + " Wheat Stored");
         }
     }
 

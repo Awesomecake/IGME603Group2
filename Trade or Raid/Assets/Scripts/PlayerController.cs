@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Variables")]
     [SerializeField] private float speed;
 
+    [Header("Script References")]
+    public PlayerStorage playerStorage;
+
     private bool isMoving = false;
     private Vector2 moveDirection = Vector2.zero;
 
