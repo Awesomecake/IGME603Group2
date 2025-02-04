@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CastleStorage : MonoBehaviour
 {
-    [SerializeField] private int playerID = 0;
+    [SerializeField] Castle castle;
     public int wheatStored = 0;
     [SerializeField] private List<GameObject> wheatStorageVisual;
 
@@ -25,7 +25,7 @@ public class CastleStorage : MonoBehaviour
     {
         PlayerController playerController = collision.GetComponent<PlayerController>();
         if (playerController != null 
-            && playerID == playerController.PlayerID 
+            && castle.playerID == playerController.PlayerID 
             && playerController.playerStorage.carriedResource != null)
         {
             StoreWheat(playerController.playerStorage);
@@ -43,7 +43,7 @@ public class CastleStorage : MonoBehaviour
 
             UpdateWheatVisual();
 
-            Debug.Log("Player " + playerID + " Wheat Stored");
+            Debug.Log("Player " + castle.playerID + " Wheat Stored");
         }
     }
 
