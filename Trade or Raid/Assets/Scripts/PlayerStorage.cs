@@ -6,6 +6,7 @@ public class PlayerStorage : MonoBehaviour
 {
     [SerializeField] public Resource carriedResource;
     [SerializeField] float harvestRange = 1;
+    [SerializeField] Castle myCastle;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +14,7 @@ public class PlayerStorage : MonoBehaviour
         {
             Resource newResource = collision.GetComponent<Resource>();
             PickUpResource(newResource);
-
+            carriedResource.GatherResource(transform);
         }
     }
 
@@ -24,6 +25,7 @@ public class PlayerStorage : MonoBehaviour
 
     public void DepositResource()
     {
+        carriedResource.DepositResource(myCastle.transform);
         carriedResource = null;
     }
 

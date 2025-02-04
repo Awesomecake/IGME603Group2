@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] SpriteRenderer spriteRenderer;
+    public void GatherResource(Transform player)
     {
-        
+        //Add animation here
+        transform.parent = player;
+        transform.localPosition = new Vector2(0, 1);
+        spriteRenderer.sortingOrder = 4;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DepositResource(Transform castle)
     {
-        
+        //Add animation here
+        gameObject.SetActive(false);
     }
 }
