@@ -9,6 +9,7 @@ public class SpriteAnimations : MonoBehaviour
     //General Animation Variables
     private float startingScaleY = 0f;
     private float walkAnimProgress = 0f;
+    private float harvestAnimProgress = 0f;
 
     [Header("GameObject Variables")]
     private SpriteRenderer spriteRenderer;
@@ -21,7 +22,7 @@ public class SpriteAnimations : MonoBehaviour
     [HideInInspector] public bool isMoving = false;
 
     [Header("Harvest Animation Variables")]
-    public float harvestTime = 0f;
+    public float harvestTime = 1f;
     [SerializeField] private float harvestVerticalStretchStrength = 1f;
     [SerializeField] private float harvestHorizontalSquashStrength = 1f;
     public bool isBeingHarvested = false;
@@ -56,6 +57,16 @@ public class SpriteAnimations : MonoBehaviour
         //else if(Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         //{
         //    EndMoving();
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    BeginHarvesting();
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    EndHarvesting();
         //}
 
         //***** WALK ANIMATION *****
@@ -104,7 +115,17 @@ public class SpriteAnimations : MonoBehaviour
         //***** HARVEST ANIMATION *****
         if(isBeingHarvested)
         {
+            //increment harvestAnimProgress
+            harvestAnimProgress += Time.deltaTime;
 
+            if(harvestAnimProgress > 0f && harvestAnimProgress <= harvestTime)
+            {
+                HarvestStretchSpriteUp(Time.deltaTime);
+            }
+            else if(harvestAnimProgress > harvestTime)
+            {
+                EndHarvesting();
+            }
         }
     }
 
@@ -164,11 +185,14 @@ public class SpriteAnimations : MonoBehaviour
         isBeingHarvested = true;
     }
 
-    public void CancelHarvesting()
+    public void EndHarvesting()
     {
         //set isBeingHarvested to false
         isBeingHarvested = false;
-        
+
+        //reset harvestAnimProgress
+        harvestAnimProgress = 0f;
+
         //reset transform
         Reset_Transform();
     }
@@ -177,13 +201,15 @@ public class SpriteAnimations : MonoBehaviour
     {
         //stretch sprite vertically and shrink sprite horizontally
         gameObject.transform.localScale += new Vector3(-harvestHorizontalSquashStrength, harvestVerticalStretchStrength, 0) * deltaTime;
+        //gameObject.transform.localScale = Vector3.Lerp(-harvestHorizontalSquashStrength, harvestVerticalStretchStrength, 0) * deltaTime;
     }
 
-    private void HarvestSquashSpriteDown(float deltaTime)
-    {
-        //shrink sprite vertically and stretch sprite horizontally
-        gameObject.transform.localScale += new Vector3(harvestHorizontalSquashStrength, -harvestVerticalStretchStrength, 0) * deltaTime;
-    }
+    //private void HarvestSquashSpriteDown(float deltaTime)
+    //{
+    //    //shrink sprite vertically and stretch sprite horizontally
+    //    gameObject.transform.localScale += new Vector3(harvestHorizontalSquashStrength, -harvestVerticalStretchStrength, 0) * deltaTime;
+    //}
+
     //***** Helper Functions *****
     private void Reset_Transform()
     {
