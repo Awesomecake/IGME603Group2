@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 1936444752227229191}
   - component: {fileID: 2731124230760917624}
   - component: {fileID: 6105737218245076801}
+  - component: {fileID: 1669086728843066864}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -250,6 +251,7 @@ MonoBehaviour:
   BluePlayerSprite: {fileID: 21300000, guid: bc78e029435ae8347ab5a06286156832, type: 3}
   spriteAnimations: {fileID: 2181214697122918932}
   speed: 0.01
+  playerStorage: {fileID: 1669086728843066864}
 --- !u!61 &6105737218245076801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -295,3 +297,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1669086728843066864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571437764087730539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37366c7bac9f4a64c9206202bbccd02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carriedResource: {fileID: 0}
+  harvestRange: 1
