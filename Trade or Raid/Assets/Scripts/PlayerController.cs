@@ -99,6 +99,6 @@ public class PlayerController : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    void OnValidate() { UnityEditor.EditorApplication.delayCall += UpdatePlayerColor; }
+    void OnValidate() { UpdatePlayerColor(); }
 #endif
 }

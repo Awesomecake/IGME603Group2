@@ -1,58 +1,72 @@
 using TMPro;
 using UnityEngine;
 
-public class CastleStorage : MonoBehaviour
-{
-    [SerializeField] Castle castle;
-    public int wheatStored = 0;
+public class CastleStorage : MonoBehaviour {
+	[SerializeField] Castle castle;
+	[SerializeField] private int _wheatStored = 0;
     [SerializeField] private TextMeshProUGUI wheatStoreText;
 
-    [Header("Sprite Animation")]
-    [SerializeField] private SpriteAnimations spriteAnimations;
+	[Header("Sprite Animation")]
+	[SerializeField] private SpriteAnimations spriteAnimations;
 
-    //Night Cycle
-    public void DayPassed()
-    {
-        //remove wheat
-        wheatStored--;
-        UpdateWheatVisual();
+	/// <summary>
+	/// The current number of wheat that is stored within this castle storage
+	/// </summary>
+	public int WheatStored {
+		get => _wheatStored;
+		set {
+			_wheatStored = value;
+			UpdateWheatVisual( );
 
-        if (wheatStored == 0)
-        {
-            //Player Dies
-        }
-    }
+			// If there are no more wheat remaining, the player has died
+			if (_wheatStored == 0) {
+				/// TO DO: Make the player able to die
+			}
+		}
+	}
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        PlayerController playerController = collision.GetComponent<PlayerController>();
-        if (playerController != null 
-            && castle.playerID == playerController.PlayerID 
-            && playerController.playerStorage.carriedResource != null)
-        {
-            StoreWheat(playerController.playerStorage);
-        }
-    }
+	/// <summary>
+	/// Update the castle storage when the day begins
+	/// </summary>
+	public void OnDayBegin ( ) {
+		/// TO DO: Change this to increase based on the days that have passed
+		WheatStored--;
+	}
 
-    private void StoreWheat(PlayerStorage playerStorage)
-    {
-        playerStorage.DepositResource();
+	/// <summary>
+	/// Update the castle storage when they are raided
+	/// </summary>
+	public void OnRaid ( ) {
+		/// NOTE: Might need to update this value to make raids more worth it
+		WheatStored -= 2;
+	}
 
-        spriteAnimations.BeginDepositAnimation();
+	public void OnTriggerEnter2D (Collider2D collision) {
+		PlayerController playerController = collision.GetComponent<PlayerController>( );
+		if (playerController != null
+			&& castle.playerID == playerController.PlayerID
+			&& playerController.playerStorage.carriedResource != null) {
+			StoreWheat(playerController.playerStorage);
+		}
+	}
 
-        if (wheatStored < 10)
-        {
-            //Add Wheat
-            wheatStored++;
+	/// <summary>
+	/// Store some wheat from a player into this castle storage
+	/// </summary>
+	/// <param name="playerStorage">The player storage to get the wheat from</param>
+	private void StoreWheat (PlayerStorage playerStorage) {
+		// Update the player's sprite animations
+		playerStorage.DepositResource( );
+		spriteAnimations.BeginDepositAnimation( );
 
-            UpdateWheatVisual();
+		// Add wheat to this castle storage
+		WheatStored++;
 
-            Debug.Log("Player " + castle.playerID + " Wheat Stored");
-        }
-    }
+		Debug.Log("Player " + castle.playerID + " Wheat Stored");
+	}
 
     public void UpdateWheatVisual()
     {
-        wheatStoreText.text = wheatStored.ToString();
+        wheatStoreText.text = WheatStored.ToString();
     }
 }
