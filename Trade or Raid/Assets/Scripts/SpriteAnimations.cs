@@ -34,6 +34,8 @@ public class SpriteAnimations : MonoBehaviour
     [SerializeField] private float jumpTimeLength = 1f;
     [SerializeField] private float jumpMaxHeight = 1f;
     [HideInInspector] public bool isJumping = false;
+    private Transform targetTransformToJumpTo;
+    private Vector3 preJumpPos = Vector3.zero;
 
     [Header("Deposit Animation Variables")]
     [SerializeField] private float depositWiggleTimeLength = 1f;
@@ -195,7 +197,20 @@ public class SpriteAnimations : MonoBehaviour
         //***** JUMP TO POINT ANIMATION *****
         #region JUMP TO POINT ANIMATION
 
-        //if()
+        if(isJumping)
+        {
+            //increment jumpAnimProgress
+            jumpAnimProgress += Time.deltaTime;
+
+            if(jumpAnimProgress > 0f && jumpAnimProgress <= jumpTimeLength)
+            {
+                JumpUp(Time.deltaTime);
+            }
+            else if(jumpAnimProgress > jumpTimeLength)
+            {
+                EndJumpAnimation();
+            }
+        }
 
         #endregion
 
@@ -322,6 +337,47 @@ public class SpriteAnimations : MonoBehaviour
     {
         //shrink sprite vertically and stretch sprite horizontally
         gameObject.transform.localScale += new Vector3(harvestHorizontalSquashStrength * fastHarvestAnimMultiplier, -harvestVerticalStretchStrength * fastHarvestAnimMultiplier, 0) * deltaTime;
+    }
+
+    #endregion
+
+    //***** Jump Animation Functions *****
+    #region Jump Animation Functions
+
+    public void BeginJumpAnimation(Transform transformToJumpTo)
+    {
+        Debug.Log("Start");
+        //set isJumping to true
+        isJumping = true;
+
+        //set preJumpPos
+        preJumpPos = gameObject.transform.position;
+
+        //set targetTransformToJumpTo to transformToJumpTo
+        targetTransformToJumpTo = transformToJumpTo;
+    }
+
+    public void EndJumpAnimation()
+    {
+        Debug.Log("End");
+        //set isJumping to false
+        isJumping = false;
+
+        //reset jumpAnimProgress to 0f
+        jumpAnimProgress = 0f;
+
+        //attach resource to the player that harvested it 
+        gameObject.transform.parent.gameObject.GetComponent<Resource>().AttachToPlayer(targetTransformToJumpTo);
+    }
+
+    private void JumpUp(float deltaTime)
+    {
+        Debug.Log("Jumping!");
+        //change y value
+
+        //change x value as long as targetTransformToJumpTo exists
+        if (targetTransformToJumpTo)
+            Vector3.MoveTowards(preJumpPos, targetTransformToJumpTo.position, deltaTime / jumpTimeLength);
     }
 
     #endregion
