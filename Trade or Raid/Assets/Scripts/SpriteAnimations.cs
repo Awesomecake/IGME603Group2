@@ -10,6 +10,7 @@ public class SpriteAnimations : MonoBehaviour
     private float startingScaleY = 0f;
     private float walkAnimProgress = 0f;
     private float harvestAnimProgress = 0f;
+    private float depositAnimProgress = 0f;
 
     [Header("GameObject Variables")]
     private SpriteRenderer spriteRenderer;
@@ -26,6 +27,12 @@ public class SpriteAnimations : MonoBehaviour
     [SerializeField] private float harvestVerticalStretchStrength = 1f;
     [SerializeField] private float harvestHorizontalSquashStrength = 1f;
     public bool isBeingHarvested = false;
+
+    [Header("Deposit Animation Variables")]
+    [SerializeField] private float depositWiggleTimeLength = 1f;
+    [SerializeField] private float depositVerticalStretchStrength = 1f;
+    [SerializeField] private float depositHorizontalSquashStrength = 1f;
+    [HideInInspector] public bool isDepositing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +75,11 @@ public class SpriteAnimations : MonoBehaviour
         //{
         //    EndHarvesting();
         //}
+
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            BeginDepositAnimation();
+        }
 
         //***** WALK ANIMATION *****
         if (isMoving)
@@ -125,6 +137,26 @@ public class SpriteAnimations : MonoBehaviour
             else if(harvestAnimProgress > harvestTime)
             {
                 EndHarvesting();
+            }
+        }
+
+        //***** DEPOSIT ANIMATION *****
+        if(isDepositing)
+        {
+            //increment depositAnimProgress
+            depositAnimProgress += Time.deltaTime;
+
+            if(depositAnimProgress > 0f && depositAnimProgress <= depositWiggleTimeLength * 0.5f)
+            {
+                DepositSquashSpriteDown(Time.deltaTime);
+            }
+            else if(depositAnimProgress > depositWiggleTimeLength * 0.5f && depositAnimProgress <= depositWiggleTimeLength)
+            {
+                DepositStretchSpriteUp(Time.deltaTime);
+            }
+            else if (depositAnimProgress > depositWiggleTimeLength)
+            {
+                EndDepositAnimation();
             }
         }
     }
@@ -216,6 +248,40 @@ public class SpriteAnimations : MonoBehaviour
     //    //shrink sprite vertically and stretch sprite horizontally
     //    gameObject.transform.localScale += new Vector3(harvestHorizontalSquashStrength, -harvestVerticalStretchStrength, 0) * deltaTime;
     //}
+
+    //***** Depositing Animation Functions *****
+    public void BeginDepositAnimation()
+    {
+        //set isDepositing to true
+        isDepositing = true;
+
+        //reset depositAnimProgress to zero
+        depositAnimProgress = 0f;
+    }
+
+    public void EndDepositAnimation()
+    {
+        //set isDepositing to false
+        isDepositing = false;
+
+        //reset depositAnimProgress to zero
+        depositAnimProgress = 0f;
+
+        //reset transform
+        Reset_Transform();
+    }
+
+    private void DepositStretchSpriteUp(float deltaTime)
+    {
+        //stretch sprite vertically and shrink sprite horizontally
+        gameObject.transform.localScale += new Vector3(-depositHorizontalSquashStrength, depositVerticalStretchStrength, 0) * deltaTime;
+    }
+
+    private void DepositSquashSpriteDown(float deltaTime)
+    {
+        //shrink sprite vertically and stretch sprite horizontally
+        gameObject.transform.localScale += new Vector3(depositHorizontalSquashStrength, -depositVerticalStretchStrength, 0) * deltaTime;
+    }
 
     //***** Helper Functions *****
     private void Reset_Transform()

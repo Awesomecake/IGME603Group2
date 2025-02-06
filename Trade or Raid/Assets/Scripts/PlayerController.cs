@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        transform.Translate(moveDirection * speed);
+        transform.Translate(moveDirection * speed * Time.deltaTime);
     }
 
     void UpdatePlayerColor()

@@ -8,6 +8,9 @@ public class CastleStorage : MonoBehaviour
     public int wheatStored = 0;
     [SerializeField] private List<GameObject> wheatStorageVisual;
 
+    [Header("Sprite Animation")]
+    [SerializeField] private SpriteAnimations spriteAnimations;
+
     //Night Cycle
     public void DayPassed()
     {
@@ -35,6 +38,8 @@ public class CastleStorage : MonoBehaviour
     private void StoreWheat(PlayerStorage playerStorage)
     {
         playerStorage.DepositResource();
+
+        spriteAnimations.BeginDepositAnimation();
 
         if (wheatStored < 10)
         {
