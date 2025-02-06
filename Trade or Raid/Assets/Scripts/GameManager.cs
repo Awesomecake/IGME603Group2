@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour {
 	[Header("References")]
 	[SerializeField] private Light2D globalLight;
+	[SerializeField] private TextMeshProUGUI timerText;
+	[SerializeField] private TextMeshProUGUI dayText;
+	[SerializeField] private TextMeshProUGUI objectiveText;
 	[Header("Properties")]
 	[SerializeField] private Gradient lightGradient;
 	[SerializeField] private float daySeconds;
 	[SerializeField] private float nightSeconds;
 	[SerializeField] private bool isDay;
+	[SerializeField] private int dayCount;
 
 	private float timer;
-
-	private void Start ( ) {
-
-	}
 
 	private void Update ( ) {
 		// Update the game differently based on if it is daytime or nighttime
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour {
 			if (timer <= 0) {
 				isDay = true;
 				timer = daySeconds;
+				dayCount++;
+				dayText.text = $"Day {dayCount}";
 			}
 		}
 
@@ -42,6 +45,8 @@ public class GameManager : MonoBehaviour {
 		globalLight.color = lightGradient.Evaluate(-4 * (Mathf.Pow(x, 2) - x));
 
 		// Decrease the timer based on the time that has passed
+		string dayNightText = (isDay ? "Night" : "Day");
+		timerText.text = $"Time Until {dayNightText}: {Mathf.CeilToInt(timer)}s";
 		timer -= Time.deltaTime;
 	}
 }
