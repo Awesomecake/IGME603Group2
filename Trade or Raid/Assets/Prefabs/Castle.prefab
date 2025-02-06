@@ -537,6 +537,7 @@ MonoBehaviour:
   - {fileID: 2406804227718489216}
   - {fileID: 870923448260613114}
   - {fileID: 8929761102163909804}
+  spriteAnimations: {fileID: 6854063105023450926}
 --- !u!50 &1747842685270709590
 Rigidbody2D:
   serializedVersion: 4

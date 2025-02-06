@@ -250,18 +250,21 @@ public class SpriteAnimations : MonoBehaviour
     //}
 
     //***** Depositing Animation Functions *****
-    private void BeginDepositAnimation()
+    public void BeginDepositAnimation()
     {
         //set isDepositing to true
         isDepositing = true;
+
+        //reset depositAnimProgress to zero
+        depositAnimProgress = 0f;
     }
 
-    private void EndDepositAnimation()
+    public void EndDepositAnimation()
     {
         //set isDepositing to false
         isDepositing = false;
 
-        //set depositAnimProgress to zero
+        //reset depositAnimProgress to zero
         depositAnimProgress = 0f;
 
         //reset transform
