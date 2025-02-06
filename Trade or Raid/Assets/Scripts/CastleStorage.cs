@@ -67,6 +67,6 @@ public class CastleStorage : MonoBehaviour {
 
     public void UpdateWheatVisual()
     {
-        wheatStoreText.text = WheatStored.ToString();
+        wheatStoreText.text = "x" + WheatStored.ToString();
     }
 }
