@@ -2541,7 +2541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5114199020098461141, guid: d98dd1a37b1c3d741be9b390ecebf1a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7194746607825680967, guid: d98dd1a37b1c3d741be9b390ecebf1a7, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2746,7 +2746,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle
       objectReference: {fileID: 0}
+    - target: {fileID: 3848636476563859302, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
+      propertyPath: m_Name
+      value: CastleSprite
+      objectReference: {fileID: 0}
     - target: {fileID: 5944649644609920704, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8622b451a387b764e8af03f29fdfb637, type: 3}
+    - target: {fileID: 5944649644609920704, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744386314957671260, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8622b451a387b764e8af03f29fdfb637, type: 3}
