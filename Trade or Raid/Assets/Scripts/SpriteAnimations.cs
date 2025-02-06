@@ -77,15 +77,15 @@ public class SpriteAnimations : MonoBehaviour
         //    EndMoving();
         //}
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            BeginHarvesting();
-        }
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    BeginHarvesting();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            EndHarvesting();
-        }
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    EndHarvesting();
+        //}
 
         //if(Input.GetKeyDown(KeyCode.U))
         //{
@@ -318,6 +318,8 @@ public class SpriteAnimations : MonoBehaviour
 
         //reset transform
         Reset_Transform();
+
+        //BeginJumpAnimation(GameObject.Find("TempGameObject").transform);
     }
 
     private void HarvestStretchSpriteUp(float deltaTime)
@@ -346,7 +348,7 @@ public class SpriteAnimations : MonoBehaviour
 
     public void BeginJumpAnimation(Transform transformToJumpTo)
     {
-        Debug.Log("Start");
+        //Debug.Log("Start");
         //set isJumping to true
         isJumping = true;
 
@@ -359,7 +361,7 @@ public class SpriteAnimations : MonoBehaviour
 
     public void EndJumpAnimation()
     {
-        Debug.Log("End");
+        //Debug.Log("End");
         //set isJumping to false
         isJumping = false;
 
@@ -367,12 +369,12 @@ public class SpriteAnimations : MonoBehaviour
         jumpAnimProgress = 0f;
 
         //attach resource to the player that harvested it 
-        gameObject.transform.parent.gameObject.GetComponent<Resource>().AttachToPlayer(targetTransformToJumpTo);
+        //gameObject.transform.parent.gameObject.GetComponent<Resource>().AttachToPlayer(targetTransformToJumpTo);
     }
 
     private void JumpUp(float deltaTime)
     {
-        Debug.Log("Jumping!");
+        //Debug.Log("Jumping!");
         //change y value
 
         //change x value as long as targetTransformToJumpTo exists
