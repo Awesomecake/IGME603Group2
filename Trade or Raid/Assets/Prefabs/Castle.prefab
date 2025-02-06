@@ -843,9 +843,13 @@ MonoBehaviour:
   harvestVerticalStretchStrength: 1
   harvestHorizontalSquashStrength: 1
   isBeingHarvested: 0
-  depositWiggleTimeLength: 0.5
-  depositVerticalStretchStrength: 1
-  depositHorizontalSquashStrength: 0.5
+  fastHarvestAnimMultiplier: 1
+  jumpTimeLength: 1
+  jumpMaxHeight: 1
+  isJumping: 0
+  depositWiggleTimeLength: 1
+  depositVerticalStretchStrength: 2
+  depositHorizontalSquashStrength: 1
   isDepositing: 0
 --- !u!1 &4988744474039409637
 GameObject:

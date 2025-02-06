@@ -695,12 +695,16 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: b018fe9f37f60034da5d8a7ef5818c7d, type: 3}
     - target: {fileID: 5944649644609920704, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308738117440275412, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
       propertyPath: playerID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6744386314957671260, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b018fe9f37f60034da5d8a7ef5818c7d, type: 3}
     m_RemovedComponents:
     - {fileID: 2969153270820176019, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
     m_RemovedGameObjects: []
@@ -1148,6 +1152,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5944649644609920704, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744386314957671260, guid: 3fc2c5523f2339c48846786dd903fa79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a20ca0ce15d570a47b2b0a7f3a9f3afb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

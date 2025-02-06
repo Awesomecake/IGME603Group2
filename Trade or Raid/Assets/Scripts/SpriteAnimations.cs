@@ -222,16 +222,33 @@ public class SpriteAnimations : MonoBehaviour
             //increment depositAnimProgress
             depositAnimProgress += Time.deltaTime;
 
-            if(depositAnimProgress > 0f && depositAnimProgress <= depositWiggleTimeLength * 0.5f)
+            if (depositAnimProgress > 0f && depositAnimProgress <= depositWiggleTimeLength * 0.16f)
             {
-                DepositSquashSpriteDown(Time.deltaTime);
+                DepositSquashSpriteDown(Time.deltaTime, depositHorizontalSquashStrength, depositHorizontalSquashStrength);
             }
-            else if(depositAnimProgress > depositWiggleTimeLength * 0.5f && depositAnimProgress <= depositWiggleTimeLength)
+            else if(depositAnimProgress > depositWiggleTimeLength * 0.16f && depositAnimProgress <= depositWiggleTimeLength * 0.32f)
             {
-                DepositStretchSpriteUp(Time.deltaTime);
+                DepositStretchSpriteUp(Time.deltaTime, depositHorizontalSquashStrength, depositHorizontalSquashStrength);
             }
-            else if (depositAnimProgress > depositWiggleTimeLength)
+            else if(depositAnimProgress > depositWiggleTimeLength * 0.32f && depositAnimProgress <= depositWiggleTimeLength * 0.48f)
             {
+                DepositSquashSpriteDown(Time.deltaTime, depositHorizontalSquashStrength / 2f, depositHorizontalSquashStrength / 2f);
+            }
+            else if (depositAnimProgress > depositWiggleTimeLength * 0.48f && depositAnimProgress <= depositWiggleTimeLength * 0.64f)
+            {
+                DepositStretchSpriteUp(Time.deltaTime, depositHorizontalSquashStrength / 2f, depositHorizontalSquashStrength / 2f);
+            }
+            else if (depositAnimProgress > depositWiggleTimeLength * 0.64f && depositAnimProgress <= depositWiggleTimeLength * 0.80f)
+            {
+                DepositSquashSpriteDown(Time.deltaTime, depositHorizontalSquashStrength / 4f, depositHorizontalSquashStrength / 4f);
+            }
+            else if (depositAnimProgress > depositWiggleTimeLength * 0.80f && depositAnimProgress <= depositWiggleTimeLength * 0.96f)
+            {
+                DepositStretchSpriteUp(Time.deltaTime, depositHorizontalSquashStrength / 4f, depositHorizontalSquashStrength / 4f);
+            }
+            else if (depositAnimProgress > depositWiggleTimeLength * 0.96f)
+            {
+                //ResetStrengths();
                 EndDepositAnimation();
             }
         }
@@ -408,16 +425,16 @@ public class SpriteAnimations : MonoBehaviour
         Reset_Transform();
     }
 
-    private void DepositStretchSpriteUp(float deltaTime)
+    private void DepositStretchSpriteUp(float deltaTime, float hor, float ver)
     {
         //stretch sprite vertically and shrink sprite horizontally
-        gameObject.transform.localScale += new Vector3(-depositHorizontalSquashStrength, depositVerticalStretchStrength, 0) * deltaTime;
+        gameObject.transform.localScale += new Vector3(-hor, ver, 0) * deltaTime;
     }
 
-    private void DepositSquashSpriteDown(float deltaTime)
+    private void DepositSquashSpriteDown(float deltaTime, float hor, float ver)
     {
         //shrink sprite vertically and stretch sprite horizontally
-        gameObject.transform.localScale += new Vector3(depositHorizontalSquashStrength, -depositVerticalStretchStrength, 0) * deltaTime;
+        gameObject.transform.localScale += new Vector3(hor, -ver, 0) * deltaTime;
     }
 
     #endregion
