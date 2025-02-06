@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour {
 	[Header("References")]
 	[SerializeField] private Light2D globalLight;
+	[Space]
 	[SerializeField] private TextMeshProUGUI timerText;
 	[SerializeField] private TextMeshProUGUI dayText;
 	[SerializeField] private TextMeshProUGUI objectiveText;
+	[Space]
+	[SerializeField] private CastleStorage[ ] castleStorages;
 	[Header("Properties")]
 	[SerializeField] private Gradient lightGradient;
 	[SerializeField] private float daySeconds;
@@ -35,8 +39,15 @@ public class GameManager : MonoBehaviour {
 			if (timer <= 0) {
 				isDay = true;
 				timer = daySeconds;
+
+				// Increment the day number
 				dayCount++;
 				dayText.text = $"Day {dayCount}";
+
+				// Decrease the wheat stored in the castle storages
+				foreach (CastleStorage castleStorage in castleStorages) {
+					castleStorage.OnDayBegin( );
+				}
 			}
 		}
 
@@ -48,5 +59,32 @@ public class GameManager : MonoBehaviour {
 		string dayNightText = (isDay ? "Night" : "Day");
 		timerText.text = $"Time Until {dayNightText}: {Mathf.CeilToInt(timer)}s";
 		timer -= Time.deltaTime;
+	}
+
+	public void RaidPlayer1 (InputAction.CallbackContext context) {
+		// If it is currently daytime, there is no raiding
+		if (isDay) {
+			return;
+		}
+
+		castleStorages[0].OnRaid( );
+	}
+
+	public void RaidPlayer2 (InputAction.CallbackContext context) {
+		// If it is currently daytime, there is no raiding
+		if (isDay) {
+			return;
+		}
+
+		castleStorages[1].OnRaid( );
+	}
+
+	public void RaidPlayer3 (InputAction.CallbackContext context) {
+		// If it is currently daytime, there is no raiding
+		if (isDay) {
+			return;
+		}
+
+		castleStorages[2].OnRaid( );
 	}
 }
