@@ -11,6 +11,7 @@ public class SpriteAnimations : MonoBehaviour
     private float walkAnimProgress = 0f;
     private float harvestAnimProgress = 0f;
     private float depositAnimProgress = 0f;
+    private float jumpAnimProgress = 0f;
 
     [Header("GameObject Variables")]
     private SpriteRenderer spriteRenderer;
@@ -26,7 +27,13 @@ public class SpriteAnimations : MonoBehaviour
     public float harvestTime = 1f;
     [SerializeField] private float harvestVerticalStretchStrength = 1f;
     [SerializeField] private float harvestHorizontalSquashStrength = 1f;
-    public bool isBeingHarvested = false;
+    [HideInInspector] public bool isBeingHarvested = false;
+    [SerializeField] private float fastHarvestAnimMultiplier = 1f;
+
+    [Header("Jump Animation Variables")]
+    [SerializeField] private float jumpTimeLength = 1f;
+    [SerializeField] private float jumpMaxHeight = 1f;
+    [HideInInspector] public bool isJumping = false;
 
     [Header("Deposit Animation Variables")]
     [SerializeField] private float depositWiggleTimeLength = 1f;
@@ -47,7 +54,9 @@ public class SpriteAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug inputs REMOVE IF NOT DEBUGGING
+        //***** Debug inputs REMOVE IF NOT DEBUGGING *****
+        #region Debug inputs
+
         //if(Input.GetKeyDown(KeyCode.LeftArrow))
         //{
         //    BeginMovingLeft();
@@ -66,22 +75,26 @@ public class SpriteAnimations : MonoBehaviour
         //    EndMoving();
         //}
 
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    BeginHarvesting();
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    EndHarvesting();
-        //}
-
-        if(Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            BeginDepositAnimation();
+            BeginHarvesting();
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            EndHarvesting();
+        }
+
+        //if(Input.GetKeyDown(KeyCode.U))
+        //{
+        //    BeginDepositAnimation();
+        //}
+
+        #endregion
+
         //***** WALK ANIMATION *****
+        #region WALK ANIMATION
+
         if (isMoving)
         {
             //increment walk animation progress
@@ -124,15 +137,52 @@ public class SpriteAnimations : MonoBehaviour
             }
         }
 
+        #endregion
+
         //***** HARVEST ANIMATION *****
-        if(isBeingHarvested)
+        #region HARVEST ANIMATION
+
+        if (isBeingHarvested)
         {
             //increment harvestAnimProgress
             harvestAnimProgress += Time.deltaTime;
 
-            if(harvestAnimProgress > 0f && harvestAnimProgress <= harvestTime)
+            if(harvestAnimProgress > 0f && harvestAnimProgress <= harvestTime * 0.6f)
             {
-                HarvestStretchSpriteUp(Time.deltaTime/harvestTime);
+                //HarvestStretchSpriteUp(Time.deltaTime/harvestTime);
+                HarvestStretchSpriteUp(Time.deltaTime);
+            }
+            else if(harvestAnimProgress > 0.60f && harvestAnimProgress <= harvestTime * 0.65f)
+            {
+                FastHarvestStretchSpriteDown(Time.deltaTime);
+            }
+            else if (harvestAnimProgress > 0.65f && harvestAnimProgress <= harvestTime * 0.70f)
+            {
+                FastHarvestStretchSpriteUp(Time.deltaTime);
+            }
+            else if (harvestAnimProgress > 0.70f && harvestAnimProgress <= harvestTime * 0.75f)
+            {
+                FastHarvestStretchSpriteDown(Time.deltaTime);
+            }
+            else if (harvestAnimProgress > 0.75f && harvestAnimProgress <= harvestTime * 0.80f)
+            {
+                FastHarvestStretchSpriteUp(Time.deltaTime);
+            }
+            else if (harvestAnimProgress > 0.80f && harvestAnimProgress <= harvestTime * 0.85f)
+            {
+                FastHarvestStretchSpriteDown(Time.deltaTime);
+            }
+            else if (harvestAnimProgress > 0.85f && harvestAnimProgress <= harvestTime * 0.90f)
+            {
+                FastHarvestStretchSpriteUp(Time.deltaTime);
+            }
+            else if (harvestAnimProgress > 0.90f && harvestAnimProgress <= harvestTime * 0.95f)
+            {
+                FastHarvestStretchSpriteDown(Time.deltaTime);
+            }
+            else if (harvestAnimProgress > 0.95f && harvestAnimProgress <= harvestTime)
+            {
+                FastHarvestStretchSpriteUp(Time.deltaTime);
             }
             else if(harvestAnimProgress > harvestTime)
             {
@@ -140,8 +190,19 @@ public class SpriteAnimations : MonoBehaviour
             }
         }
 
+        #endregion
+
+        //***** JUMP TO POINT ANIMATION *****
+        #region JUMP TO POINT ANIMATION
+
+        //if()
+
+        #endregion
+
         //***** DEPOSIT ANIMATION *****
-        if(isDepositing)
+        #region DEPOSIT ANIMATION
+
+        if (isDepositing)
         {
             //increment depositAnimProgress
             depositAnimProgress += Time.deltaTime;
@@ -159,9 +220,13 @@ public class SpriteAnimations : MonoBehaviour
                 EndDepositAnimation();
             }
         }
+
+        #endregion
     }
 
     //***** Walk Animation Functions *****
+    #region Walk Animation Functions
+
     public void BeginMovingLeft()
     {
         //flip sprite to left
@@ -210,7 +275,11 @@ public class SpriteAnimations : MonoBehaviour
         gameObject.transform.localScale += new Vector3(walkHorizontalSquashStrength, -walkVerticalStretchStrength, 0) * deltaTime;
     }
 
+    #endregion
+
     //***** Harvest Animation Functions *****
+    #region Harvest Animation Functions
+
     public void BeginHarvesting()
     {
         //set isBeingHarvested to true
@@ -243,13 +312,23 @@ public class SpriteAnimations : MonoBehaviour
         //gameObject.transform.localScale = Vector3.Lerp(-harvestHorizontalSquashStrength, harvestVerticalStretchStrength, 0) * deltaTime;
     }
 
-    //private void HarvestSquashSpriteDown(float deltaTime)
-    //{
-    //    //shrink sprite vertically and stretch sprite horizontally
-    //    gameObject.transform.localScale += new Vector3(harvestHorizontalSquashStrength, -harvestVerticalStretchStrength, 0) * deltaTime;
-    //}
+    private void FastHarvestStretchSpriteUp(float deltaTime)
+    {
+        //stretch sprite vertically and shrink sprite horizontally
+        gameObject.transform.localScale += new Vector3(-harvestHorizontalSquashStrength * fastHarvestAnimMultiplier, harvestVerticalStretchStrength * fastHarvestAnimMultiplier, 0) * deltaTime;
+    }
+
+    private void FastHarvestStretchSpriteDown(float deltaTime)
+    {
+        //shrink sprite vertically and stretch sprite horizontally
+        gameObject.transform.localScale += new Vector3(harvestHorizontalSquashStrength * fastHarvestAnimMultiplier, -harvestVerticalStretchStrength * fastHarvestAnimMultiplier, 0) * deltaTime;
+    }
+
+    #endregion
 
     //***** Depositing Animation Functions *****
+    #region Depositing Animation Functions
+
     public void BeginDepositAnimation()
     {
         //set isDepositing to true
@@ -282,6 +361,8 @@ public class SpriteAnimations : MonoBehaviour
         //shrink sprite vertically and stretch sprite horizontally
         gameObject.transform.localScale += new Vector3(depositHorizontalSquashStrength, -depositVerticalStretchStrength, 0) * deltaTime;
     }
+
+    #endregion
 
     //***** Helper Functions *****
     private void Reset_Transform()

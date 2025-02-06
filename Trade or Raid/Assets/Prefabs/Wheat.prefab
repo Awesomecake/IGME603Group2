@@ -177,10 +177,18 @@ MonoBehaviour:
   walkVerticalStretchStrength: 1
   walkHorizontalSquashStrength: 1
   isMoving: 0
-  harvestTime: 5
-  harvestVerticalStretchStrength: 1
-  harvestHorizontalSquashStrength: 1
+  harvestTime: 2.5
+  harvestVerticalStretchStrength: 0.25
+  harvestHorizontalSquashStrength: 0.25
   isBeingHarvested: 0
+  fastHarvestAnimMultiplier: 8
+  jumpTimeLength: 1
+  jumpMaxHeight: 1
+  isJumping: 0
+  depositWiggleTimeLength: 1
+  depositVerticalStretchStrength: 1
+  depositHorizontalSquashStrength: 1
+  isDepositing: 0
 --- !u!1 &2062970416618020745
 GameObject:
   m_ObjectHideFlags: 0

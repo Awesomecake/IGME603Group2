@@ -36,7 +36,7 @@ public class Resource : MonoBehaviour
 
     public void AttachToPlayer(Transform player)
     {
-        //Add animation here
+        spriteAnimations.BeginHarvesting();
         transform.parent = player;
         transform.localPosition = new Vector2(0.3f, 0);
         transform.eulerAngles = new Vector3(0, 0, -15);

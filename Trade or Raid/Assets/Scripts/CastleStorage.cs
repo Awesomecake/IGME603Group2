@@ -60,11 +60,11 @@ public class CastleStorage : MonoBehaviour
             {
                 if (i < wheatStored)
                 {
-                    wheatStorageVisual[i].active = true;
+                    wheatStorageVisual[i].SetActive(true);
                 }
                 else
                 {
-                    wheatStorageVisual[i].active = false;
+                    wheatStorageVisual[i].SetActive(false);
                 }
             }
         }
