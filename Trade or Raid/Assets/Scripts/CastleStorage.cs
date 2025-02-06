@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CastleStorage : MonoBehaviour {
 	[SerializeField] Castle castle;
 	[SerializeField] private int _wheatStored = 0;
-	[SerializeField] private List<GameObject> wheatStorageVisual;
+    [SerializeField] private TextMeshProUGUI wheatStoreText;
 
 	[Header("Sprite Animation")]
 	[SerializeField] private SpriteAnimations spriteAnimations;
@@ -66,13 +65,8 @@ public class CastleStorage : MonoBehaviour {
 		Debug.Log("Player " + castle.playerID + " Wheat Stored");
 	}
 
-	public void UpdateWheatVisual ( ) {
-		for (int i = 0; i < wheatStorageVisual.Count; i++) {
-			if (i < WheatStored) {
-				wheatStorageVisual[i]?.SetActive(true);
-			} else {
-				wheatStorageVisual[i]?.SetActive(false);
-			}
-		}
-	}
+    public void UpdateWheatVisual()
+    {
+        wheatStoreText.text = WheatStored.ToString();
+    }
 }
