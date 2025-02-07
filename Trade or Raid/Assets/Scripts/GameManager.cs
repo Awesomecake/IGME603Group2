@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI objectiveText;
 	[Space]
 	[SerializeField] private CastleStorage[ ] castleStorages;
+	[SerializeField] private WheatSpawner wheatSpawner;
 	[Header("Properties")]
 	[SerializeField] private Gradient lightGradient;
 	[SerializeField] private float daySeconds;
@@ -31,6 +32,9 @@ public class GameManager : MonoBehaviour {
 			if (timer <= 0) {
 				isDay = false;
 				timer = nightSeconds;
+
+				//Despawn all wheat
+				wheatSpawner.DespawnAllWheat();
 			} else {
 				x = (daySeconds - timer) / daySeconds;
 			}
@@ -48,6 +52,9 @@ public class GameManager : MonoBehaviour {
 				foreach (CastleStorage castleStorage in castleStorages) {
 					castleStorage.OnDayBegin( );
 				}
+
+				//Spawn wheat for new day
+				wheatSpawner.NewDay();
 			}
 		}
 
