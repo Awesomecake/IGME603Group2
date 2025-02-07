@@ -78,26 +78,31 @@ public class WheatSpawner : MonoBehaviour
 
     private void DisplayRandomEventMessage(int wheatModifier, int playerID)
     {
-        switch (wheatModifier)
+        if (wheatModifier == 0)
         {
-            case -2:
-                Debug.Log("Great famine! Crop yeild drastically reduced for kingdom " + playerID + "!");
-                break;
-            case -1:
-                Debug.Log("Famine! Crop yeild reduced for kingdom " + playerID + "!");
-                break;
-            case 0:
-                Debug.Log("Normal crop yield for kingdom " + playerID + "!");
-                break;
-            case 1:
-                Debug.Log("Bounty! Crop yield increased for kingdom " + playerID + "!");
-                break;
-            case 2:
-                Debug.Log("Great bounty! Crop yeild abundantly increased for kingdom " + playerID + "!");
-                break;
-            default:
-                Debug.LogWarning("Oops! This wasn't supposed to happen...");
-                break;
+            Debug.Log("Normal yield for kingdom " + playerID);
+        }
+        else if (wheatModifier < 0)
+        {
+            string message = "";
+            for (int i = 0; i < Mathf.Abs(wheatModifier); i++)
+            {
+                message += "-";
+            }
+
+            message += "yield for kingdom " + playerID;
+            Debug.Log(message);
+        }
+        else
+        {
+            string message = "";
+            for (int i = 0; i < Mathf.Abs(wheatModifier); i++)
+            {
+                message += "+";
+            }
+
+            message += "yield for kingdom " + playerID;
+            Debug.Log(message);
         }
 
         if (wheatDensity - wheatModifier * 10 <= 0)
