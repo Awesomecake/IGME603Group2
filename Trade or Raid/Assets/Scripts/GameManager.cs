@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private Gradient lightGradient;
 	[SerializeField] private float daySeconds;
 	[SerializeField] private float nightSeconds;
-	[SerializeField] private bool isDay;
+	public bool isDay;
 	[SerializeField] private int dayCount;
 
 	private float timer;

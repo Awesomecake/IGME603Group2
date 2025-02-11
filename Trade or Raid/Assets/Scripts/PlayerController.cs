@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Script References")]
     public PlayerStorage playerStorage;
+    [SerializeField] private GameManager gameManager;
 
     private bool isMoving = false;
     private Vector2 moveDirection = Vector2.zero;
@@ -56,7 +58,10 @@ public class PlayerController : MonoBehaviour
     public void InputActionMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>().normalized;
-        isMoving = moveDirection != Vector2.zero;
+        if (!gameManager.isDay)
+            moveDirection = Vector2.zero;
+
+        isMoving = (moveDirection != Vector2.zero && gameManager.isDay);
 
         //***** movement animation logic *****
         //if player is not moving,...
