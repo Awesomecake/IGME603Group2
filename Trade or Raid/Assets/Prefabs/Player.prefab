@@ -297,6 +297,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2a98a11e-99a9-4a17-876d-03fc6ab624c5
     m_ActionName: Player/Raid Player 3
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2731124230760917624}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: DonateToPlayer1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3da8d648-0e59-4a55-b84a-1d832a4341a9
+    m_ActionName: Player/Donate to Player 1[/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID1/dpad/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2731124230760917624}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: DonateToPlayer2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c702cf33-0a62-45e6-90e7-1c03f635cd6a
+    m_ActionName: Player/Donate to Player 2[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID1/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2731124230760917624}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: DonateToPlayer3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 97dd743f-cff1-424d-9706-151d8ce50bdb
+    m_ActionName: Player/Donate to Player 3[/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

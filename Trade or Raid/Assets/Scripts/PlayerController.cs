@@ -146,6 +146,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DonateToPlayer1(InputAction.CallbackContext context)
+    {
+        if (!hasPlayerRaided && playerID != 0)
+        {
+            Debug.Log("Player " + playerID + " trying to donate to Player 1");
+
+            hasPlayerRaided = true;
+            GameManager.instance.DonateToPlayer(0);
+        }
+    }
+
+    public void DonateToPlayer2(InputAction.CallbackContext context)
+    {
+        if (!hasPlayerRaided && playerID != 1)
+        {
+            Debug.Log("Player " + playerID + " trying to donate to Player 2");
+
+            hasPlayerRaided = true;
+            GameManager.instance.DonateToPlayer(1);
+        }
+    }
+
+    public void DonateToPlayer3(InputAction.CallbackContext context)
+    {
+        if (!hasPlayerRaided && playerID != 2)
+        {
+            Debug.Log("Player " + playerID + " trying to donate to Player 3");
+
+            hasPlayerRaided = true;
+            GameManager.instance.DonateToPlayer(2);
+        }
+    }
 
 #if UNITY_EDITOR
     void OnValidate() { UpdatePlayerColor(); }

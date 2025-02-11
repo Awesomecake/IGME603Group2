@@ -59,6 +59,11 @@ public class CastleStorage : MonoBehaviour
         //WheatStored -= 2;
     }
 
+    public void OnDonation()
+    {
+        _wheatStored += 3;
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController playerController = collision.GetComponent<PlayerController>();
