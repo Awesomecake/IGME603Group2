@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
@@ -26,9 +27,20 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 
-    private void Awake()
+	public UnityEvent OnDaybreak = new UnityEvent();
+	public UnityEvent OnNightfall = new UnityEvent();
+
+
+	private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update ( ) {
@@ -40,6 +52,8 @@ public class GameManager : MonoBehaviour {
 				isDay = false;
 				timer = nightSeconds;
 
+				OnNightfall?.Invoke();
+
 				//Despawn all wheat
 				wheatSpawner.DespawnAllWheat();
 			} else {
@@ -50,9 +64,10 @@ public class GameManager : MonoBehaviour {
 			if (timer <= 0) {
 				isDay = true;
 				timer = daySeconds;
+                OnDaybreak?.Invoke();
 
-				// Increment the day number
-				dayCount++;
+                // Increment the day number
+                dayCount++;
 				dayText.text = $"Day {dayCount}";
 
 				// Decrease the wheat stored in the castle storages
@@ -75,7 +90,7 @@ public class GameManager : MonoBehaviour {
 		timer -= Time.deltaTime;
 	}
 
-	public void RaidPlayer1 (InputAction.CallbackContext context) {
+	public void RaidPlayer1 () {
 		// If it is currently daytime, there is no raiding
 		if (isDay) {
 			return;
@@ -84,7 +99,7 @@ public class GameManager : MonoBehaviour {
 		castleStorages[0].OnRaid( );
 	}
 
-	public void RaidPlayer2 (InputAction.CallbackContext context) {
+	public void RaidPlayer2 () {
 		// If it is currently daytime, there is no raiding
 		if (isDay) {
 			return;
@@ -93,7 +108,7 @@ public class GameManager : MonoBehaviour {
 		castleStorages[1].OnRaid( );
 	}
 
-	public void RaidPlayer3 (InputAction.CallbackContext context) {
+	public void RaidPlayer3 () {
 		// If it is currently daytime, there is no raiding
 		if (isDay) {
 			return;

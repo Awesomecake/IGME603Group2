@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     // 0,1,2 for Red, Green, Blue
     [Header("Player ID Variables")]
     [SerializeField] private int playerID;
-    public int PlayerID {  get { return playerID; } }
+    public int PlayerID { get { return playerID; } }
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite RedPlayerSprite;
     [SerializeField] private Sprite GreenPlayerSprite;
@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Variables")]
     [SerializeField] private float speed;
 
+    [Header("State variables")]
+    [SerializeField] bool hasPlayerRaided = false;
+
     [Header("Script References")]
     public PlayerStorage playerStorage;
 
@@ -30,6 +33,18 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         UpdatePlayerColor();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.instance.OnNightfall.AddListener(() => hasPlayerRaided = false);
+        GameManager.instance.OnDaybreak.AddListener(() => hasPlayerRaided = true);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.OnNightfall.RemoveAllListeners();
+        GameManager.instance.OnDaybreak.RemoveAllListeners();
     }
 
     private void Update()
@@ -45,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         //***** movement animation logic *****
         //if player is not moving,...
-        if(moveDirection == Vector2.zero)
+        if (moveDirection == Vector2.zero)
         {
             //end walking animation
             spriteAnimations.EndMoving();
@@ -56,7 +71,7 @@ public class PlayerController : MonoBehaviour
             //start walking animation to the left
             spriteAnimations.BeginMovingLeft();
 
-            if(playerStorage.carriedResource != null)
+            if (playerStorage.carriedResource != null)
             {
                 playerStorage.carriedResource.spriteAnimations.BeginMovingLeft();
             }
@@ -81,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdatePlayerColor()
     {
-        switch (playerID%3)
+        switch (playerID % 3)
         {
             case 1:
                 if (GreenPlayerSprite != null)
@@ -97,6 +112,40 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    public void RaidPlayer1(InputAction.CallbackContext context)
+    {
+        if (!hasPlayerRaided && playerID != 0)
+        {
+            Debug.Log("Player " + playerID + " trying to Raid Player 1");
+
+            hasPlayerRaided = true;
+            GameManager.instance.RaidPlayer1();
+        }
+    }
+
+    public void RaidPlayer2(InputAction.CallbackContext context)
+    {
+        if (!hasPlayerRaided && playerID != 1)
+        {
+            Debug.Log("Player " + playerID + " trying to Raid Player 2");
+
+            hasPlayerRaided = true;
+            GameManager.instance.RaidPlayer2();
+        }
+    }
+
+    public void RaidPlayer3(InputAction.CallbackContext context)
+    {
+        if (!hasPlayerRaided && playerID != 2)
+        {
+            Debug.Log("Player " + playerID + " trying to Raid Player 3");
+
+            hasPlayerRaided = true;
+            GameManager.instance.RaidPlayer3();
+        }
+    }
+
 
 #if UNITY_EDITOR
     void OnValidate() { UpdatePlayerColor(); }

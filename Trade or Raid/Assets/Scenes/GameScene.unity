@@ -719,32 +719,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2058026781}
     - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: InputActionPause
-      objectReference: {fileID: 0}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RaidPlayer1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RaidPlayer2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RaidPlayer3
       objectReference: {fileID: 0}
     - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: speed
@@ -1309,10 +1285,16 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
-  daySeconds: 20
+  daySeconds: 2
   nightSeconds: 10
   isDay: 0
   dayCount: 0
+  OnDaybreak:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNightfall:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &532813749
 Transform:
   m_ObjectHideFlags: 0
@@ -2839,32 +2821,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2058026781}
     - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: InputActionPause
-      objectReference: {fileID: 0}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RaidPlayer1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RaidPlayer2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RaidPlayer3
       objectReference: {fileID: 0}
     - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: speed
@@ -3405,18 +3363,6 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2058026781}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
-    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 532813748}
     - target: {fileID: 2819719761167419126, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.68

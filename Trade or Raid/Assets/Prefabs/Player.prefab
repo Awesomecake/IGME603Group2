@@ -251,8 +251,8 @@ MonoBehaviour:
     m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 2731124230760917624}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: RaidPlayer1
         m_Mode: 0
         m_Arguments:
@@ -267,8 +267,8 @@ MonoBehaviour:
     m_ActionName: Player/Raid Player 1
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 2731124230760917624}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: RaidPlayer2
         m_Mode: 0
         m_Arguments:
@@ -283,8 +283,8 @@ MonoBehaviour:
     m_ActionName: Player/Raid Player 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 2731124230760917624}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: RaidPlayer3
         m_Mode: 0
         m_Arguments:
@@ -321,6 +321,7 @@ MonoBehaviour:
   BluePlayerSprite: {fileID: 21300000, guid: bc78e029435ae8347ab5a06286156832, type: 3}
   spriteAnimations: {fileID: 2181214697122918932}
   speed: 1
+  hasPlayerRaided: 0
   playerStorage: {fileID: 1669086728843066864}
 --- !u!61 &6105737218245076801
 BoxCollider2D:

@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7396499888685855296}
+  collider: {fileID: 80635839011691819}
   spriteAnimations: {fileID: 6022444441964103227}
   harvestTime: 2.5
   circleTimer: {fileID: 5189807729204259802}
