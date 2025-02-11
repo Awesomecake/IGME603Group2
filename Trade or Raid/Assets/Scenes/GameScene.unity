@@ -373,17 +373,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172202822}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1236981984}
-  m_Father: {fileID: 2058026779}
+  m_Father: {fileID: 1418221544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 0.000045776367}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172202824
@@ -2026,14 +2026,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Controls:</b>
+  m_text: '<b>Night Time Actions:</b>
 
 
-    Face Buttons - Raid Corresponding Kingdom (-2 wheat)
+    Choose one action:
 
 
-    Direction
-    Buttons - Donate food (+3 wheat)'
+    Face Buttons
+    - Raid Corresponding Kingdom (-2 wheat)
+
+
+    Direction Buttons - Donate food
+    to corresponding kingdom (+3 wheat)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e30729b8af93014cb714f45efcea749, type: 2}
   m_sharedMaterial: {fileID: 4596186484869122647, guid: 2e30729b8af93014cb714f45efcea749, type: 2}
@@ -2215,6 +2219,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1418221543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1418221544}
+  - component: {fileID: 1418221545}
+  m_Layer: 5
+  m_Name: Night Controls Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1418221544
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418221543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 172202823}
+  m_Father: {fileID: 2058026779}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 800, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1418221545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418221543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40db06dd21d43040a9eeb72604333cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nightControlsPanel: {fileID: 172202822}
 --- !u!1 &1457469840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,7 +3369,7 @@ RectTransform:
   m_Children:
   - {fileID: 2031643181}
   - {fileID: 417131722}
-  - {fileID: 172202823}
+  - {fileID: 1418221544}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
