@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Resource : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Collider2D collider;
     [SerializeField] public SpriteAnimations spriteAnimations;
     [SerializeField] float harvestTime = 1;
     [SerializeField] Image circleTimer;
@@ -40,6 +41,7 @@ public class Resource : MonoBehaviour
         transform.parent = player;
         transform.localPosition = new Vector2(0.3f, 0);
         transform.eulerAngles = new Vector3(0, 0, -15);
+        collider.enabled = false;
         //spriteRenderer.sortingOrder = 4;
     }
 

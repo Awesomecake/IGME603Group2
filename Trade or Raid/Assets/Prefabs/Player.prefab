@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1002291921731533723}
   - component: {fileID: 3188389371459306962}
   - component: {fileID: 2181214697122918932}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WalkingPlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +106,10 @@ MonoBehaviour:
   harvestVerticalStretchStrength: 1
   harvestHorizontalSquashStrength: 1
   isBeingHarvested: 0
+  fastHarvestAnimMultiplier: 1
+  jumpTimeLength: 1
+  jumpMaxHeight: 1
+  isJumping: 0
   depositWiggleTimeLength: 1
   depositVerticalStretchStrength: 1
   depositHorizontalSquashStrength: 1
@@ -125,7 +129,7 @@ GameObject:
   - component: {fileID: 1669086728843066864}
   - component: {fileID: 8726016883340641850}
   - component: {fileID: 89081463329281340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

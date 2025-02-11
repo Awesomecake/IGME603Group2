@@ -24,7 +24,14 @@ public class GameManager : MonoBehaviour {
 
 	private float timer;
 
-	private void Update ( ) {
+	public static GameManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void Update ( ) {
 		// Update the game differently based on if it is daytime or nighttime
 		float x = 0;
 		if (isDay) {
