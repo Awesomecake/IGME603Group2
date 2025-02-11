@@ -246,8 +246,30 @@
                 },
                 {
                     "name": "",
+                    "id": "d65df513-dd70-4a27-a5d0-b5bad7d9b998",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Raid Player 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d2651fb8-b9bc-4ed2-b7e8-0fc558abce97",
                     "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Raid Player 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc60ab20-0936-4c5e-83a1-13c9094704f4",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -268,8 +290,30 @@
                 },
                 {
                     "name": "",
+                    "id": "7d91f11f-71fe-4226-a7c1-34eb245cd6fc",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Raid Player 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "51107f6b-4862-4ca1-b74b-5958a56007b7",
                     "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Donate to Player 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9944db5-8b15-434f-9a60-c23800499bec",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -290,8 +334,30 @@
                 },
                 {
                     "name": "",
+                    "id": "ffbebbe7-ca59-4312-b442-1f074fba48bc",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Donate to Player 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "24fbc381-5da1-45d9-be93-e3acf08cb581",
                     "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Donate to Player 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9d3d871-9742-463f-aa9d-dd643ec1215f",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
