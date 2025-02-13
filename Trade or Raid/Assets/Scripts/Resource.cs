@@ -15,6 +15,7 @@ public class Resource : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Debug.Log("Wheat touched");
         PlayerController playerController = collision.GetComponent<PlayerController>();
 
         if (playerController != null && playerController.playerStorage.carriedResource == null)
@@ -25,13 +26,29 @@ public class Resource : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        PlayerController playerController = collision.GetComponent<PlayerController>();
+        Debug.Log("Wheat STOP touched");
+        //PlayerController playerController = collision.GetComponent<PlayerController>();
 
-        if (playerController != null && playerController.playerStorage.carriedResource == null)
+        //Debug.Log("player controller is = " + (playerController != null));
+        //Debug.Log("carriedResource = " + (playerController.playerStorage == null));
+        //Debug.Log("player controller is = " + (playerController != null) + ". and carriedResource = " + (playerController.playerStorage.carriedResource == null) + ". Combined = " + (playerController != null && playerController.playerStorage.carriedResource == null));
+        //if (playerController != null)
+        //{
+        //    if (playerController.playerStorage.carriedResource == null)
+        //    {
+        //        StopCoroutine(GatherCoroutine);
+        //        spriteAnimations.EndHarvesting();
+        //        circleTimer.fillAmount = 0;
+        //    }
+        //}
+
+        if (GatherCoroutine != null)
         {
+            Debug.Log("Here");
             StopCoroutine(GatherCoroutine);
             spriteAnimations.EndHarvesting();
             circleTimer.fillAmount = 0;
+            GatherCoroutine = null;
         }
     }
 
