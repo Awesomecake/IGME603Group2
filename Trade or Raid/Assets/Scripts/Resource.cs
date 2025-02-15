@@ -29,7 +29,7 @@ public class Resource : MonoBehaviour
 
         if (playerController != null && playerController.playerStorage.carriedResource == null)
         {
-            StopCoroutine(GatherCoroutine);
+            StopAllCoroutines();
             spriteAnimations.EndHarvesting();
             circleTimer.fillAmount = 0;
         }
