@@ -42,7 +42,7 @@ public class Resource : MonoBehaviour
         transform.localPosition = new Vector2(0.3f, 0);
         transform.eulerAngles = new Vector3(0, 0, -15);
         collider.enabled = false;
-        //spriteRenderer.sortingOrder = 4;
+        spriteRenderer.sortingOrder = 4;
     }
 
     public void DepositResource(Transform castle)

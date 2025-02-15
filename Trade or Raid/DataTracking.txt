@@ -1,0 +1,26 @@
+First Action : Final Stats for Player 0:
+ > Raided Player 1 0 times, Donated 0 times
+ > Raided Player 2 0 times, Donated 0 times
+ > Raided Player 3 0 times, Donated 0 times
+Final Stats for Player 1:
+ > Raided Player 1 0 times, Donated 0 times
+ > Raided Player 2 0 times, Donated 0 times
+ > Raided Player 3 0 times, Donated 0 times
+Final Stats for Player 2:
+ > Raided Player 1 0 times, Donated 0 times
+ > Raided Player 2 0 times, Donated 0 times
+ > Raided Player 3 0 times, Donated 0 times
+ > Player 0 raided Player 2
+ > Player 2 raided Player 2
+Final Stats for Player 0:
+ > Raided Player 1 0 times, Donated 0 times
+ > Raided Player 2 1 times, Donated 0 times
+ > Raided Player 3 0 times, Donated 0 times
+Final Stats for Player 1:
+ > Raided Player 1 0 times, Donated 0 times
+ > Raided Player 2 0 times, Donated 0 times
+ > Raided Player 3 0 times, Donated 0 times
+Final Stats for Player 2:
+ > Raided Player 1 0 times, Donated 0 times
+ > Raided Player 2 1 times, Donated 0 times
+ > Raided Player 3 0 times, Donated 0 times

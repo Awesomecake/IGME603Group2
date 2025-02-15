@@ -64,7 +64,18 @@ public class CastleStorage : MonoBehaviour
         _wheatStored += 3;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    PlayerController playerController = collision.GetComponent<PlayerController>();
+    //    if (playerController != null
+    //        && castle.playerID == playerController.PlayerID
+    //        && playerController.playerStorage.carriedResource != null)
+    //    {
+    //        StoreWheat(playerController.playerStorage);
+    //    }
+    //}
+
+    public void OnTriggerStay2D(Collider2D collision)
     {
         PlayerController playerController = collision.GetComponent<PlayerController>();
         if (playerController != null
