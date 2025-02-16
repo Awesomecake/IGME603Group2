@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -59,10 +60,10 @@ public class CastleStorage : MonoBehaviour
         //WheatStored -= 2;
     }
 
-    public void OnDonation()
-    {
-        _wheatStored += 3;
-    }
+    //public void OnDonation()
+    //{
+    //    _wheatStored += 3;
+    //}
 
     //public void OnTriggerEnter2D(Collider2D collision)
     //{
@@ -79,7 +80,7 @@ public class CastleStorage : MonoBehaviour
     {
         PlayerController playerController = collision.GetComponent<PlayerController>();
         if (playerController != null
-            && castle.playerID == playerController.PlayerID
+            //&& castle.playerID == playerController.PlayerID
             && playerController.playerStorage.carriedResource != null)
         {
             StoreWheat(playerController.playerStorage);
@@ -99,7 +100,25 @@ public class CastleStorage : MonoBehaviour
         // Add wheat to this castle storage
         WheatStored++;
 
-        Debug.Log("Player " + castle.playerID + " Wheat Stored");
+        //if player deposited wheat into a castle that is NOT their own,...
+        if (playerStorage.gameObject.GetComponent<PlayerController>().PlayerID != castle.playerID)
+        {
+            //add the appropriate donation log
+            switch(castle.playerID)
+            {
+                case 0:
+                    playerStorage.gameObject.GetComponent<PlayerController>().DonateToPlayer1();
+                    break;
+                case 1:
+                    playerStorage.gameObject.GetComponent<PlayerController>().DonateToPlayer2();
+                    break;
+                case 2:
+                    playerStorage.gameObject.GetComponent<PlayerController>().DonateToPlayer3();
+                    break;
+            }
+        }
+
+        //Debug.Log("Player " + (playerStorage.gameObject.GetComponent<PlayerController>().PlayerID + 1) + " stored wheat into Player " + (castle.playerID + 1) + "'s Castle");
     }
 
     public void UpdateWheatVisual()
