@@ -90,31 +90,34 @@ public class GameManager : MonoBehaviour {
 		timer -= Time.deltaTime;
 	}
 
-	public void RaidPlayer1 () {
+	public bool RaidPlayer1 () {
 		// If it is currently daytime, there is no raiding
 		if (isDay) {
-			return;
+			return false;
 		}
 
 		castleStorages[0].OnRaid( );
+		return true;
 	}
 
-	public void RaidPlayer2 () {
+	public bool RaidPlayer2 () {
 		// If it is currently daytime, there is no raiding
 		if (isDay) {
-			return;
+			return false;
 		}
 
 		castleStorages[1].OnRaid( );
+		return true;
 	}
 
-	public void RaidPlayer3 () {
+	public bool RaidPlayer3 () {
 		// If it is currently daytime, there is no raiding
 		if (isDay) {
-			return;
+			return false;
 		}
 
 		castleStorages[2].OnRaid( );
+		return true;
 	}
 
 	//public void DonateToPlayer(int playerIndex)

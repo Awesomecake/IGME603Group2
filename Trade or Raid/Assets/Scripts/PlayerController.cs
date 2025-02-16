@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    static string fileName = "DataTracking.txt";
-
     // 0,1,2 for Red, Green, Blue
     [Header("Player ID Variables")]
     [SerializeField] private int playerID;
@@ -30,17 +28,10 @@ public class PlayerController : MonoBehaviour
     [Header("Script References")]
     public PlayerStorage playerStorage;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private DataTracker dataTracker;
 
     private bool isMoving = false;
     private Vector2 moveDirection = Vector2.zero;
-
-    //Data Tracking Variables
-    int player1raids = 0;
-    int player2raids = 0;
-    int player3raids = 0;
-    int player1donations = 0;
-    int player2donations = 0;
-    int player3donations = 0;
 
     private void Start()
     {
@@ -134,12 +125,12 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player " + playerID + " trying to Raid Player 1");
 
-            hasPlayerRaided = true;
-            GameManager.instance.RaidPlayer1();
-
-            player1raids++;
-            CreateLog($" > Player {playerID} raided Player 1");
-        }
+			hasPlayerRaided = true;
+			// Only update the data tracker if the player was successfully raided
+			if (GameManager.instance.RaidPlayer1( )) {
+				dataTracker.IncrementPlayerData(playerID, 0, true);
+			}
+		}
     }
 
     public void RaidPlayer2(InputAction.CallbackContext context)
@@ -149,11 +140,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player " + playerID + " trying to Raid Player 2");
 
             hasPlayerRaided = true;
-            GameManager.instance.RaidPlayer2();
-
-            player2raids++;
-            CreateLog($" > Player {playerID} raided Player 2");
-        }
+			// Only update the data tracker if the player was successfully raided
+			if (GameManager.instance.RaidPlayer2( )) {
+				dataTracker.IncrementPlayerData(playerID, 1, true);
+			}
+		}
     }
 
     public void RaidPlayer3(InputAction.CallbackContext context)
@@ -163,11 +154,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player " + playerID + " trying to Raid Player 3");
 
             hasPlayerRaided = true;
-            GameManager.instance.RaidPlayer3();
-
-            player3raids++;
-            CreateLog($" > Player {playerID} raided Player 3");
-        }
+            // Only update the data tracker if the player was successfully raided
+            if (GameManager.instance.RaidPlayer3()) {
+				dataTracker.IncrementPlayerData(playerID, 2, true);
+			}
+		}
     }
 
     public void DonateToPlayer1()
@@ -176,13 +167,12 @@ public class PlayerController : MonoBehaviour
         //{
         Debug.Log("Player " + playerID + " trying to donate to Player 1");
 
-        //    hasPlayerRaided = true;
-        //    GameManager.instance.DonateToPlayer(0);
+		//    hasPlayerRaided = true;
+		//    GameManager.instance.DonateToPlayer(0);
 
-        player1donations++;
-        CreateLog($" > Player {playerID} donated to Player 1");
-        //}
-    }
+		dataTracker.IncrementPlayerData(playerID, 0, false);
+		//}
+	}
 
     public void DonateToPlayer2()
     {
@@ -190,13 +180,12 @@ public class PlayerController : MonoBehaviour
         //{
               Debug.Log("Player " + playerID + " trying to donate to Player 2");
 
-        //    hasPlayerRaided = true;
-        //    GameManager.instance.DonateToPlayer(1);
+		//    hasPlayerRaided = true;
+		//    GameManager.instance.DonateToPlayer(1);
 
-        player2donations++;
-        CreateLog($" > Player {playerID} donated to Player 2");
-        //}
-    }
+		dataTracker.IncrementPlayerData(playerID, 1, false);
+		//}
+	}
 
     //InputAction.CallbackContext context
     public void DonateToPlayer3()
@@ -205,43 +194,12 @@ public class PlayerController : MonoBehaviour
         //{
             Debug.Log("Player " + playerID + " trying to donate to Player 3");
 
-            //hasPlayerRaided = true;
-            //GameManager.instance.DonateToPlayer(2);
+        //hasPlayerRaided = true;
+        //GameManager.instance.DonateToPlayer(2);
 
-            player3donations++;
-            CreateLog($" > Player {playerID} donated to Player 3");
-        //}
-    }
-
-    public void OnDestroy()
-    {
-        CreateLog($"Final Stats for Player {playerID}:");
-        CreateLog($" > Raided Player 1 {player1raids} times, Donated {player1donations} times");
-        CreateLog($" > Raided Player 2 {player2raids} times, Donated {player2donations} times");
-        CreateLog($" > Raided Player 3 {player3raids} times, Donated {player3donations} times");
-    }
-
-    void CreateLog(string output)
-    {
-        // This text is added only once to the file.
-        if (!File.Exists(fileName))
-        {
-            // Create a file to write to.
-            using (StreamWriter sw = File.CreateText(fileName))
-            {
-                sw.WriteLine("First Action : " + output);
-            }
-        }
-        else
-        {
-            // This text is always added, making the file longer over time
-            // if it is not deleted.
-            using (StreamWriter sw = File.AppendText(fileName))
-            {
-                sw.WriteLine(output);
-            }
-        }
-    }
+        dataTracker.IncrementPlayerData(playerID, 2, false);
+		//}
+	}
 
 #if UNITY_EDITOR
     void OnValidate() { UpdatePlayerColor(); }
