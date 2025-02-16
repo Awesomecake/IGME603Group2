@@ -793,6 +793,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 940953160}
     - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2058026781}
@@ -3090,6 +3102,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1665958584}
     - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2058026781}
@@ -3637,6 +3661,18 @@ PrefabInstance:
       propertyPath: myCastle
       value: 
       objectReference: {fileID: 809748908}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1936444752227229191, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
