@@ -821,6 +821,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: dataTracker
+      value: 
+      objectReference: {fileID: 532813750}
+    - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 532813748}
@@ -1417,12 +1421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95af05cbb6c28ab42811a5c387f1d14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1RaidCount: 0
-  Player2RaidCount: 0
-  Player3RaidCount: 0
-  Player1DonateCount: 0
-  Player2DonateCount: 0
-  Player3DonateCount: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,6 +3147,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: dataTracker
+      value: 
+      objectReference: {fileID: 532813750}
+    - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 532813748}
@@ -3696,6 +3698,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2058026781}
+    - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
+      propertyPath: dataTracker
+      value: 
+      objectReference: {fileID: 532813750}
     - target: {fileID: 2731124230760917624, guid: 4ec676433cf2cab4b8509eb56c50c8b8, type: 3}
       propertyPath: gameManager
       value: 
