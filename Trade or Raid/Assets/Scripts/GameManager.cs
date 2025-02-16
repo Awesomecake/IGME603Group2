@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour {
 		castleStorages[2].OnRaid( );
 	}
 
-	public void DonateToPlayer(int playerIndex)
-	{
-		castleStorages[playerIndex].OnDonation();
-	}
+	//public void DonateToPlayer(int playerIndex)
+	//{
+	//	castleStorages[playerIndex].OnDonation();
+	//}
 }

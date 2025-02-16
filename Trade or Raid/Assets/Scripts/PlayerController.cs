@@ -170,46 +170,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DonateToPlayer1(InputAction.CallbackContext context)
+    public void DonateToPlayer1()
     {
-        if (!hasPlayerRaided && playerID != 0)
-        {
-            Debug.Log("Player " + playerID + " trying to donate to Player 1");
+        //if (!hasPlayerRaided && playerID != 0)
+        //{
+        Debug.Log("Player " + playerID + " trying to donate to Player 1");
 
-            hasPlayerRaided = true;
-            GameManager.instance.DonateToPlayer(0);
+        //    hasPlayerRaided = true;
+        //    GameManager.instance.DonateToPlayer(0);
 
-            player1donations++;
-            CreateLog($" > Player {playerID} donated to Player 1");
-        }
+        player1donations++;
+        CreateLog($" > Player {playerID} donated to Player 1");
+        //}
     }
 
-    public void DonateToPlayer2(InputAction.CallbackContext context)
+    public void DonateToPlayer2()
     {
-        if (!hasPlayerRaided && playerID != 1)
-        {
-            Debug.Log("Player " + playerID + " trying to donate to Player 2");
+        //if (!hasPlayerRaided && playerID != 1)
+        //{
+              Debug.Log("Player " + playerID + " trying to donate to Player 2");
 
-            hasPlayerRaided = true;
-            GameManager.instance.DonateToPlayer(1);
+        //    hasPlayerRaided = true;
+        //    GameManager.instance.DonateToPlayer(1);
 
-            player2donations++;
-            CreateLog($" > Player {playerID} donated to Player 2");
-        }
+        player2donations++;
+        CreateLog($" > Player {playerID} donated to Player 2");
+        //}
     }
 
-    public void DonateToPlayer3(InputAction.CallbackContext context)
+    //InputAction.CallbackContext context
+    public void DonateToPlayer3()
     {
-        if (!hasPlayerRaided && playerID != 2)
-        {
+        //if (!hasPlayerRaided && playerID != 2)
+        //{
             Debug.Log("Player " + playerID + " trying to donate to Player 3");
 
-            hasPlayerRaided = true;
-            GameManager.instance.DonateToPlayer(2);
+            //hasPlayerRaided = true;
+            //GameManager.instance.DonateToPlayer(2);
 
             player3donations++;
             CreateLog($" > Player {playerID} donated to Player 3");
-        }
+        //}
     }
 
     public void OnDestroy()

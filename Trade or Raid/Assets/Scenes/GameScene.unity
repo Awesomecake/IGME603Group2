@@ -2056,11 +2056,7 @@ MonoBehaviour:
 
 
     Face Buttons/Arrow
-    Keys - Raid Corresponding Kingdom (-2 wheat)
-
-
-    D-Pad/WASD - Donate food to
-    corresponding kingdom (+3 wheat)'
+    Keys - Raid Corresponding Kingdom (-2 wheat)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e30729b8af93014cb714f45efcea749, type: 2}
   m_sharedMaterial: {fileID: 4596186484869122647, guid: 2e30729b8af93014cb714f45efcea749, type: 2}
