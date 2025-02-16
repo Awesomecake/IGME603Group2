@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
     int player1raids = 0;
     int player2raids = 0;
     int player3raids = 0;
-
     int player1donations = 0;
     int player2donations = 0;
     int player3donations = 0;
