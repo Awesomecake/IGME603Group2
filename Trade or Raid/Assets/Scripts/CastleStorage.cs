@@ -1,6 +1,8 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class CastleStorage : MonoBehaviour
 {
@@ -25,10 +27,13 @@ public class CastleStorage : MonoBehaviour
             UpdateWheatVisual();
 
             // If there are no more wheat remaining, the player has died
-            if (_wheatStored == 0)
+            if (_wheatStored < 0)
             {
-                /// TO DO: Make the player able to die
-            }
+                // Sorry this code kind of sucks, I didn't have time to come up with a better solution - Frankie
+				GameManager.instance.GetComponent<DataTracker>( ).LogAction($"Player {castle.playerID + 1} has starved to death.");
+				GameManager.instance.GetComponent<DataTracker>( ).LogConclusion( );
+				SceneManager.LoadScene("MainMenuScene");
+			}
         }
     }
 
@@ -38,7 +43,6 @@ public class CastleStorage : MonoBehaviour
     public void OnDayBegin()
     {
         /// TO DO: Change this to increase based on the days that have passed
-        WheatStored = _wheatStored;
         WheatStored--;
 
         if (hasStorageBeenRaided)
@@ -60,23 +64,27 @@ public class CastleStorage : MonoBehaviour
         //WheatStored -= 2;
     }
 
-    //public void OnDonation()
-    //{
-    //    _wheatStored += 3;
-    //}
+	//public void OnDonation()
+	//{
+	//    _wheatStored += 3;
+	//}
 
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    PlayerController playerController = collision.GetComponent<PlayerController>();
-    //    if (playerController != null
-    //        && castle.playerID == playerController.PlayerID
-    //        && playerController.playerStorage.carriedResource != null)
-    //    {
-    //        StoreWheat(playerController.playerStorage);
-    //    }
-    //}
+	//public void OnTriggerEnter2D(Collider2D collision)
+	//{
+	//    PlayerController playerController = collision.GetComponent<PlayerController>();
+	//    if (playerController != null
+	//        && castle.playerID == playerController.PlayerID
+	//        && playerController.playerStorage.carriedResource != null)
+	//    {
+	//        StoreWheat(playerController.playerStorage);
+	//    }
+	//}
 
-    public void OnTriggerStay2D(Collider2D collision)
+	private void Start ( ) {
+        UpdateWheatVisual( );
+	}
+
+	public void OnTriggerStay2D(Collider2D collision)
     {
         PlayerController playerController = collision.GetComponent<PlayerController>();
         if (playerController != null

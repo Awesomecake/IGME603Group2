@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private float daySeconds;
 	[SerializeField] private float nightSeconds;
 	public bool isDay;
-	[SerializeField] private int dayCount;
+	[SerializeField] public int DayCount;
 
 	private float timer;
 
@@ -67,8 +67,9 @@ public class GameManager : MonoBehaviour {
                 OnDaybreak?.Invoke();
 
                 // Increment the day number
-                dayCount++;
-				dayText.text = $"Day {dayCount}";
+                DayCount++;
+				dayText.text = $"Day {DayCount}";
+				GetComponent<DataTracker>( ).LogAction($"\nDawn of Day {DayCount}\n");
 
 				// Decrease the wheat stored in the castle storages
 				foreach (CastleStorage castleStorage in castleStorages) {
