@@ -103,18 +103,18 @@ public class DataTracker : MonoBehaviour {
 		}
 
 		// Log the players' score
-		float score = totalRaids / Mathf.Max(1, totalDonations);
+		float score = (totalDonations - totalRaids) / 2;
 		if (firstRaider != -1) {
-			score -= Mathf.Exp(-(firstRaidDay - 1));
+			score -= 2 * Mathf.Exp(-0.1f * (firstRaidDay - 1));
 		}
 		if (firstDonor != -1) {
-			score += Mathf.Exp(-(firstDonationDay - 1));
+			score += 2 * Mathf.Exp(-0.1f * (firstDonationDay - 1));
 		}
 		LogAction($"\nThe players' overall score is: {score}.");
-		if (score < 1) {
-			LogAction($"A score of less than 1 indicates that players were generally friendlier towards each other and tried to work together more than they tried to raid each other.\n");
+		if (score >= 0) {
+			LogAction($"A positive score indicates that players were generally friendlier towards each other and tried to work together more than they tried to raid each other.\n");
 		} else {
-			LogAction($"A score of greater than 1 indicates that players were generally more hostile and sought to raid other players for their own gain rather than help others.\n");
+			LogAction($"A negative score indicates that players were generally more hostile and sought to raid other players for their own gain rather than help others.\n");
 		}
 
 		hasConcluded = true;
